@@ -23,7 +23,7 @@ export const increment_likes = index => ({ type: types.INCREMENT_LIKES, index })
 // 	}
 // }
 
-export const addComment = (postId, author, comment) => ({ type: types.ADD_COMMENT, indexpostId, author, comment })
+export const add_comment = (postId, author, comment) => ({ type: types.ADD_COMMENT, postId, author, comment })
 
 // remove comment
 // export function removeComment(postId, i) {
@@ -34,4 +34,4 @@ export const addComment = (postId, author, comment) => ({ type: types.ADD_COMMEN
 // 	}
 // }
 
-export const removeComment = (postId, i) => ({ type: types.REMOVE_COMMENT, postId, i })
+export const remove_comment = (postId, i) => ({ type: types.REMOVE_COMMENT, postId, i })

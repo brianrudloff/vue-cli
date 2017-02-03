@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    this is app
+    <h1>Vueduxstagram</h1>
 
     <router-view></router-view>
   </div>
@@ -26,5 +26,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
+}
+
+body {
+   background-color: #42b983;
 }
 </style>
