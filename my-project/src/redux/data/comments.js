@@ -13,7 +13,7 @@ const comments = {
       "user": "jdaveknox"
     },
     {
-      "text":"#adults",
+      "text":"Also, great pic!",
       "user": "jdaveknox"
     },
     {
@@ -21,95 +21,59 @@ const comments = {
       "user": "wesbos"
     },
     {
-      "text":"😍 love Hamilton!",
+      "text":"😍 love glaciers!",
       "user": "willowtreemegs"
     }
   ],
   "BAPIPRjQce9":[
     {
-      "text":"Those are cute! They're like silver dollar pancakes.",
+      "text":"Not the bees!!",
       "user": "rrsimonsen"
     },
     {
-      "text":"I like baby pancakes but gluten free please!! I'll bring the coffee!! See you in 6 days!!!!!! 😝😛😝♥️",
+      "text":"BEADS???? 😝😛😝♥️",
       "user": "terzisn"
     },
     {
-      "text":"... and apparently growing baby. 👀. Yum.",
+      "text":"Save the bees!",
       "user": "henrihelvetica"
     },
-    {
-      "text":"@wesbos 👍 my daughter is a pancake eating machine!",
-      "user": "brentoage"
-    },
-    {
-      "text":"Nice stove!",
-      "user": "haaps"
-    },
-    {
-      "text":"Genius bottle use! Do you make a single batch of batter or make a lot and freeze it?",
-      "user": "gobananna"
-    },
-    {
-      "text":"@gobananna I just made a batch and put in in a FIFO bottle. Keeps in the fridge for a few days.",
-      "user": "wesbos"
-    },
-    {
-      "text":"@haaps thanks! It's a Jenn air - so nice to cool with!",
-      "user": "wesbos"
-    },
-    {
-      "text":"Where would you go and for how long, if you had location freedom? - Greg 🌎",
-      "user": "world_greg"
-    }
   ],
   "BAF_KY4wcRY":[
     {
-      "text":"Looking great Wes! I'd like to see the other side of the room too.",
+      "text":"Wow, what a cool looking grove.",
       "user": "axcdnt"
     },
     {
-      "text":"I've never caught your podcast. Have one right? Btw - they don't have a Canary pillow? 😝",
+      "text":"Where is this?",
       "user": "henrihelvetica"
     },
     {
-      "text":"Great way to start the year.",
+      "text":"Hope you enjoyed the hike.",
       "user": "pmgllc"
     },
     {
-      "text":"Are there 4k monitors?",
+      "text":"Somebody call a gardener.",
       "user": "alexbaumgertner"
     },
     {
-      "text":"@axcdnt that is where I put all the junk. I'll have to clean that side too @henrihelvetica no podcast yet! @pmgllc ohh yeah! @alexbaumgertner yep - the main one is 4K - I'm loving it",
-      "user": "wesbos"
-    },
-    {
-      "text":"That chrome pillow. 😉",
-      "user": "imagesofthisandthat"
-    },
-    {
-      "text":"@wesbos is that the Dell 4k? The MacBook Pro powers it well? I also have a Retina™ / x1 setup as well. Very handy.",
-      "user": "henrihelvetica"
-    },
-    {
-      "text":"#minimalsetups",
-      "user": "wesbos"
+      "text":"This is near at Indian Wells near Palm Springs.",
+      "user": "brudloff"
     }
   ],
   "_4jHytwcUA":[
     {
-      "text":"that is the sound of success!",
+      "text":"Yum!  Looks great.",
       "user": "mdxprograms"
     }
   ],
   "_zbaOlQcbn":[
     {
-      "text":"Did she get to eat her letter?",
+      "text":"So precious!",
       "user": "pathiebert"
     },
     {
-      "text":"Nope @pathiebert! She has too much teeth now (8) so that would definitely be her first cavity 😉",
+      "text":"Looks like he's the only one at the beach today.",
       "user": "kaitbos"
     }
   ],
@@ -119,28 +83,28 @@ const comments = {
       "user": "mrjoedee"
     },
     {
-      "text":"I recently went to a ramen place in Philly. So amazing!",
+      "text":"I don't think that's going to fit in your house.",
       "user": "jrtashjian"
     }
   ],
   "_ep9kiQcVy":[
     {
-      "text":"All bundled up!  Where ya goin?",
+      "text":"OMG!!!!",
       "user": "sophie_and_sadie"
     }
   ],
   "_XpJcrwcSn":[
     {
-      "text":"Super congrats! That's wicked cool and looks great.",
+      "text":"Love that demogorgon!",
       "user": "pmgllc"
     },
     {
-      "text":"real live paper magazine? woah haha. flex box is awesome though, could rage quit without it",
+      "text":"Well done, Sir!",
       "user": "tjholowaychuk2"
     },
     {
-      "text":"@tjholowaychuk2 haha yes! Old school stylez!",
-      "user": "wesbos"
+      "text":"Happy Halloween!",
+      "user": "fiftycent"
     }
   ],
   "_KnU7MwceA":[

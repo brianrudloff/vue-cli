@@ -5,46 +5,48 @@
     <div id="left">
       <img id="photo" :src="getSource"/>
       <div id="lower">
-        <span id="caption">{{getCaption}}</span>
+        <p id="caption">{{getCaption}}</p>
         <div id="buttons">
           <span><button id="likeButton" @click="increment_likes({ index: getIndex })">{{getLikes}}</button>
-          <button id="commentButton">{{comments[getCode].length}}</button></span>
+          <button id="commentButton">{{comments[getCode] ? comments[getCode].length : 0 }}</button></span>
         </div>
       </div>
     </div>
 
     <div id="right">
-      <span>
-        <ul style="list-style: none;">
-          <li v-for="(comment, index) in getComments">
-            <p id="textDiv"><b>{{comment.user}}: </b>{{comment.text}}<span> <button id="deleteButton" @click="remove_comment({ postId: getCode, i: index })">X</button></span></p>
-          </li>
-        </ul>
-        <form >
-          <input type="text" placeholder="user" id="user" v-model="user"></input>
-          <input type="text" placeholder="comment" id="comment" v-model="comment" v-on:keyup.enter="add_comment({postId: getCode, author: user, comment: comment })"></input>
-        </form>
-      </span>
-    </div>
+      <ul style="list-style: none;">
+        <li v-for="(comment, index) in getComments">
+          <p id="textDiv"><b>{{comment.user}}: </b>{{comment.text}}</p>
+          <button id="deleteButton" @click="remove_comment({ postId: getCode, i: index })">X</button>
+          <div id="line"></div>
+        </li>
+      </ul>
 
-          
-        <!--<comments></comments>-->
+      <div id="inputDiv">
+        <input type="text" placeholder="author..." id="user" v-model="user"></input>
+        <div id="line"></div>
+        <input type="text" placeholder="comment..." id="comment" v-model="comment" v-on:keyup.enter="add_comment({postId: getCode, author: user, comment: comment }), clearInputs()" ></input>
+        <div id="lastLine"></div>
+     </div>
+    </div>
   </div>
 </template>
 
 <script>
 /* eslint-disable */
+
+// import {mapAction} from vuex
 import {mapActions} from 'vuex';
 
 export default {
   data () {
-    return {user: "",
-            comment: ""
+    return {
+      user: "",
+      comment: ""
     }
   },
-  beforeUpdate: function () {
-      console.log('cheers')
-  },
+
+  // access your redux state through 'computed'
   computed: {
     posts () {
       return this.$store.state.redux.posts;
@@ -52,85 +54,77 @@ export default {
     comments () {
       return this.$store.state.redux.comments;
     },
-     getSource () {
+    getSource () {
       let src = "";
-        this.$store.state.redux.posts.forEach((val) => {
-          if (val.code === this.$route.params.id) {
-            src = val.display_src;
-              }
-          })
-        return src;
+      this.$store.state.redux.posts.forEach((val) => {
+        if (val.code === this.$route.params.id) {
+          src = val.display_src;
+        }
+      })
+      return src;
     },
-      getCode () {
+    getCode () {
       let code = "";
-        this.$store.state.redux.posts.forEach((val) => {
-          if (val.code === this.$route.params.id) {
-            code = val.code;
-              }
-          })
-        return code;
+      this.$store.state.redux.posts.forEach((val) => {
+        if (val.code === this.$route.params.id) {
+          code = val.code;
+        }
+      })
+      return code;
     },
      getLikes () {
-      let likes = 0;
-        this.$store.state.redux.posts.forEach((val) => {
+       let likes = 0;
+       this.$store.state.redux.posts.forEach((val) => {
           if (val.code === this.$route.params.id) {
             likes = val.likes;
-              }
-          })
+          }
+        })
         return likes;
-    },
-      getId () {
-      let id = "";
-        this.$store.state.redux.posts.forEach((val) => {
-          if (val.code === this.$route.params.id) {
-            id = val.id;
-              }
-          })
-        return id;
-    },
+     },
     getCaption () {
       let caption = "";
       this.$store.state.redux.posts.forEach((val) => {
-          if (val.code === this.$route.params.id) {
-            caption = val.caption;
-              }
-          })
-        return caption;
+        if (val.code === this.$route.params.id) {
+          caption = val.caption;
+        }
+      })
+      return caption;
     },
     getIndex () {
       let index1 = 0;
       this.$store.state.redux.posts.forEach((val, index) => {
-          if (val.code === this.$route.params.id) {
-            index1 = index;
-              }
-          })
-        return index1;
+        if (val.code === this.$route.params.id) {
+          index1 = index;
+        }
+      })
+      return index1;
     },
     getComments () {
       let commentsObj = {};
       Object.keys(this.$store.state.redux.comments).forEach((val) => {
         if (val === this.$route.params.id) {
-            console.log(val)
-            commentsObj = this.$store.state.redux.comments[val];
-            console.log('commentsobj', commentsObj)
-              }
-          })
-        return commentsObj;
+          commentsObj = this.$store.state.redux.comments[val];
+        }
+      })
+      return commentsObj;
     }
   },
   methods: {
+    // use mapActions to import Redux actions
     ...mapActions({
       increment_likes: 'INCREMENT_LIKES',
       add_comment: 'ADD_COMMENT',
       remove_comment: 'REMOVE_COMMENT'
     }),
+    clearInputs () {
+      this.user = '';
+      this.comment = '';
+    }
   }
 };
 
 
 </script>
-
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
   #photo {
     width: 90%;
@@ -147,85 +141,145 @@ export default {
   }
 
   .postContainer {
-    background-color: grey;
-    width: 80%;
+    background-color: #F5F5F5;
+    width: 60%;
     margin: 0 auto;
     display: flex;
+    border-style: solid;
+    border-color: #EDEDED;
+    border-width: 7px;
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
   }
 
+  #left {
+    width: 500px;
+    order: 1;
+  }
 
-#lower {
-overflow: auto;
-width: 100%;
-padding-bottom: 10px;
-}
+  #right {
+    width: 250px;
+    order: 2;
+    padding: 15px;
+    padding-bottom:10px;
+  }
 
-#left {
-  width: 65%;
-}
+  #inputDiv {
+    margin-top: -8px;
+    padding-bottom: 5px;
+  }
 
-#right {
-  width: 35%;
-}
+  #line {
+    width: 100%;
+    height: 1px;
+    background-color: #42b983
+  }
 
-#caption {
-width: 280px;
-margin: 0 auto;
-text-align: left;
-padding-bottom: 10px;
-font-size: 1.5em;
+  #lastLine {
+    width: 100%;
+    height: 1px;
+    background-color: #42b983;
+  }
 
-}
+  #lower {
+    width: 100%;
+    padding-bottom: 20px;
+  }
 
-#buttons {
-  margin: 0 auto;
-  padding-left: 37px;
-}
+  #caption {
+    width: 88%;
+    margin: 0 auto;
+    text-align: left;
+    padding-bottom: 10px;
+    font-size: 1.5em;
+  }
 
-#textDiv {
-  text-align: left;
-}
+  #buttons {
+    width: 90%;
+    margin: 0 auto;
+    /*padding-left: 37px;*/
+    padding-top: 15px;
+    padding-bottom: 40px;
+  }
 
-button {
-  float: left;
-  width: 250px;
-  height: 45px;
-  border-radius: 1px;
-  background-color: white;
-  background-size: 25px;
-  background-repeat: no-repeat;
-  background-position: 30px;
-  margin-left: 18px;
-  padding-bottom: 20px;
-  font-size: 1em;
-  text-align: center;
-  line-height: 30px;
-  padding-inline-start: 30px;
-  border-style: solid;
-  border-color: #2c3e50;
- color: #2c3e50;
-}
+  #textDiv {
+    text-align: left;
+    width: 80%;
+  }
 
-#likeButton {
-  background-image: url('https://cdn3.iconfinder.com/data/icons/faticons/32/heart-01-128.png');
-}
+  input {
+    width: 98%;
+    height: 35px;
+    font-size: 1em;
+    color: #2c3e50;
+    border-style: none;
+    background-color: #F5F5F5;
+    outline:0
+  }
 
-#commentButton {
-   background-image: url('https://cdn3.iconfinder.com/data/icons/gray-toolbar-4/512/chat-512.png');
-}
+  #likeButton {
+    background-image: url('https://cdn3.iconfinder.com/data/icons/faticons/32/heart-01-128.png');
+    float: left;
+    width: 45%;
+    height: 45px;
+    border-radius: 1px;
+    background-color: white;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 30px;
+    padding-bottom: 20px;
+    font-size: 1em;
+    text-align: center;
+    line-height: 35px;
+    padding-inline-start: 45px;
+    border-style: solid;
+    border-color: #EDEDED;
+    border-width: 4px;
+    color: #2c3e50;
+    float:left;
+    outline:0;
+  }
 
-#deleteButton {
-  width: 5px;
-  background-color: grey;
-  border-style: none;
-  margin-left: 0px;
-  padding-bottom: 0px;
-    line-height: 0px;
-  padding-inline-start: 0px;
-}
+  #commentButton {
+    background-image: url('https://cdn3.iconfinder.com/data/icons/gray-toolbar-4/512/chat-512.png');
+    float: right;
+    width: 45%;
+    height: 45px;
+    border-radius: 1px;
+    background-color: white;
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: 30px;
+    margin-left: 18px;
+    padding-bottom: 20px;
+    font-size: 1em;
+    text-align: center;
+    line-height: 35px;
+    padding-inline-start: 45px;
+    border-style: solid;
+    border-color: #EDEDED;
+    border-width: 4px;
+    color: #2c3e50;
+    outline:0
+  }
 
-ul {
-  padding: 0px;
-}
+  #deleteButton {
+    width: 20px;
+    height: 20px;
+    background-color: #F5F5F5;
+    border-style: none;
+    margin-top: -25px;
+    padding-right: 20px;
+    text-align: center;
+    float: right;
+    color: #2c3e50;
+    font-size: 1em;
+  }
+
+  ul {
+    padding: 0px;
+    padding-bottom: -5px;
+  }
 
 </style>

@@ -6,8 +6,6 @@ import Vuex from 'vuex';
 // Import root VueX state and VueX mutations 
 import { state, mutations } from './mutations';
 
-// Import any desired plugins -- basic local storage plugin below
-// import { localStoragePlugin } from './plugins';
 
 /* Import the vueduex pluginCreator and its dependent parameters:
   1. Your Redux action type constants
@@ -20,9 +18,10 @@ import reduxStore from '../redux/store';
 // Make sure to call Vue.use(Vuex) first if using a module system
 Vue.use(Vuex);
 
-
+// Set PluginCreator to a variable
 let vdx = PluginCreator(reduxStore, reduxActionTypes);
 
+//Include the above varable in your plugins below
 const store = new Vuex.Store({
   state,
   mutations,
@@ -30,4 +29,4 @@ const store = new Vuex.Store({
 });
 
 
-export default store
+export default store;
